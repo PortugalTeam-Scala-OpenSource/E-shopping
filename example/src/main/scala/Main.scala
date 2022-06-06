@@ -1,7 +1,6 @@
 import infrastructure.actor.Actor.spawn
 import infrastructure.actor.CommandHandler
 import infrastructure.repository.InmemoryRepository
-import infrastructure.serialization.MySerializable
 
 object Main extends App {
 
@@ -12,8 +11,8 @@ object Main extends App {
     object State {
       def empty = State(0)
     }
-    case class Status(state: State) extends MySerializable
-    case class Increase(index: Int) extends MySerializable
+    case class Status(state: State)
+    case class Increase(index: Int)
     val commandHandler: CommandHandler[Increase, State, Status] = {
       int => state =>
         int match {
